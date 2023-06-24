@@ -1,5 +1,6 @@
 const connection = require('./database/connection');
 const userRoute = require('./routes/user');
+const categoryRoute = require('./routes/category');
 const express = require('express');
 const morgan = require('morgan')
 const cors = require('cors');
@@ -11,5 +12,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('dev'));
 app.use('/user', userRoute);
+app.use('/category', categoryRoute);
 
 module.exports = app

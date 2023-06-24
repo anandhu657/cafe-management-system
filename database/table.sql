@@ -1,3 +1,4 @@
+-- USER TABLE
 CREATE TABLE user(
     id int PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(250),
@@ -24,3 +25,9 @@ VALUES(
         'true',
         'admin'
     );
+-- CATEGORY TABLE
+CREATE TABLE category(
+    id int NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    PRIMARY KEY(id)
+);
