@@ -4,6 +4,7 @@ const router = express.Router();
 const auth = require('../services/authentication');
 const checkRole = require('../services/checkRole');
 
+// Category add
 router.post('/add', auth.authenticateToken, checkRole.checkRole, (req, res) => {
     const category = req.body;
     const query = "INSERT INTO category(name) VALUES(?)";
@@ -15,6 +16,7 @@ router.post('/add', auth.authenticateToken, checkRole.checkRole, (req, res) => {
     })
 });
 
+// Category get
 router.get('/get', auth.authenticateToken, (req, res) => {
     const query = "SELECT * FROM category ORDER BY name";
     connection.query(query, (err, results) => {
@@ -25,9 +27,13 @@ router.get('/get', auth.authenticateToken, (req, res) => {
     })
 })
 
+// Category update
 router.patch('/update', auth.authenticateToken, checkRole.checkRole, (req, res) => {
     const product = req.body;
-    const query = "UPDATE category SET name = ? WHERE id = ?";
+    const query = `
+        UPDATE category 
+        SET name = ? 
+        WHERE id = ?`;
     connection.query(query, [product.name, product.id], (err, results) => {
         if (!err) {
             if (results.affectedRows === 0)
