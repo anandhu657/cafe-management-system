@@ -3,7 +3,6 @@ const connection = require('../database/connection');
 const router = express.Router();
 const auth = require('../services/authentication');
 const checkRole = require('../services/checkRole');
-const { route } = require('..');
 
 // Product add 
 router.post('/add', auth.authenticateToken, checkRole.checkRole, (req, res) => {

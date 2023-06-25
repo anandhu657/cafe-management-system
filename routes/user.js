@@ -28,7 +28,6 @@ router.post('/signup', (req, res) => {
     })
 })
 
-
 // login API
 router.post('/login', (req, res) => {
     const user = req.body;
